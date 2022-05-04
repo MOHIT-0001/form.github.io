@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="form.css">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+
+    <script src="controller.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script type="module" src="firebase.js"></script>
+
+
+
+</head>
+
+<body>
+    <div class="container " style="width: 60%;">
+        <form class="bg-dark text-white p-3">
+            <div id="alertplaceholder"></div>
+            <h1 class=" text-center text-white">Club Membership Registration</h1>
+
+            <div class="form-row">
+                <div class="col text-white">
+                    <label for=""> Name</label>
+                    <input id="name" class="form-control  " type="text" placeholder="Type  Name Here" />
+                </div>
+                <!-- <div class="col text-white">
+                    <label for="">Last Name</label>
+                    <input id="name" class="form-control" type="text" placeholder="Type Last Name Here" />
+                </div> -->
+            </div>
+            <div class="form-group text-white mt-2">
+                <label for="">Age</label>
+                <input id="age" class="form-control" type="number" placeholder="Enter your age here" />
+            </div>
+            <div class="form-group text-white mt-2">
+                <label for="">Phone no.</label>
+                <input id="phone" class="form-control" type="text" placeholder="Please Give Your no." />
+            </div>
+
+
+            <div class="form-group text-white mt-2">
+                <label for="">Description</label>
+                <textarea id="desc" class="form-control" placeholder="Tell Us About Yourself" cols="30"
+                    rows="5"></textarea>
+            </div>
+
+
+            <!-- <input type="file" accept="image/*" name="image" id="imgfile" onchange="loadFile(event)"> -->
+            <input class="mt-3" type="file" accept="image/*" name="image" id="imgfile" >
+
+
+        </form>
+
+        <br />
+        <div>
+            <button id="add" class="btn btn-primary">Add</button>
+            <!-- <button class="btn btn-info">Update</button> -->
+            <button class="btn btn-success" id="save">Save</button>
+            <button class="btn btn-secondary" id="load">Load from database</button>
+            <input id="myInput" class="form-control mt-3 bg-dark text-white" type="text"
+                placeholder="Type here for search by Name">
+
+        </div>
+        <br />
+
+        <div>
+            <table id="myTable" class="table table-bordered table-sm text-white" style="width: 100%;">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="th-sm bg-primary">Name</th>
+                        <th class="th-sm bg-success">Age</th>
+                        <th class="th-sm bg-danger">Phone no.</th>
+
+                        <th class="th-sm bg-info">Description</th>
+                        <th class="th-sm bg-warning">Image</th>
+
+                    </tr>
+                </thead>
+                <tbody id="tasks">
+                    
+                </tbody>
+            </table>
+        </div>
+        <p id="body"></p>
+
+
+    </div>
+    <script>
+        // var loadFile = function (event) {
+        //     var img = document.createElement('img');
+
+        //     var image = document.getElementById('output');
+        //     img.src = URL.createObjectURL(event.target.files[0]);
+        //     document.getElementById('body').appendChild(img);
+        //     image=event.target.files[0].name
+
+
+        //     console.log(image)
+        //     // 
+        //     return image
+        // };
+    </script>
+
+</body>
+
+</html>
