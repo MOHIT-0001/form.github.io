@@ -28,7 +28,11 @@ function bindEvents() {
 function loadFile(event) {
 
   console.log(event.target)
-  let img = event.target.files[0].name
+  // let img = event.target.files[0].name
+  // img = URL.createObjectURL(event.target.files[0]);
+  let img = URL.createObjectURL(event.target.files[0]);
+
+
   console.log(img)
   // var i=img
   // return img
@@ -82,34 +86,44 @@ function addTask(img) {
 function printTask(task) {
   const tbody = document.querySelector("#tasks");
   const tr = tbody.insertRow();
-  console.log(tr)
+  
   tr.id = "row"
+
+  // console.log(tr)
+  
   let cellIndex = 0;
+  
+  // var x = 0;
+
+
+  
   for (let key in task) {
     let value = task[key];
     let td = tr.insertCell(cellIndex);
     console.log(td)
 
 
-    td.style.height = "50px";
-    // td.style.width = "50px";
+    td.style.height = "70px";
 
 
     if (cellIndex == 4) {
-      var img = document.createElement('img');
-      img.src = value
+      var imj = document.createElement('img');
+      imj.src = value
+      imj.style.height = "50px";
+      imj.style.width = "50px";
+      console.log(imj)
+      let x = document.getElementById("myTable").rows.length
+      console.log(x)
 
-      document.getElementsByTagName('td')[4].appendChild(img);
+      let tableRow = document.getElementsByTagName("tr")[x-1]
+      console.log(tableRow)
 
-
+      tableRow.getElementsByTagName('td')[4].appendChild(imj);
     }
-    else{
+    else {
       td.innerHTML = value;
     }
-    
-
     cellIndex++;
-
 
   }
 
@@ -151,5 +165,4 @@ const searchFun = () => {
     }
   }
 }
-
 
