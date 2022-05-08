@@ -1,28 +1,14 @@
-// Import the functions you need from the SDKs you need
 
-
-// import { initializeApp } from "firebase/app";
-
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBVjlVcgxEQMHh1MMPdNV-f3Bg-q1l_vFY",
-  authDomain: "table-firebase.firebaseapp.com",
-  projectId: "table-firebase",
-  storageBucket: "table-firebase.appspot.com",
-  messagingSenderId: "128336543735",
-  appId: "1:128336543735:web:d37f2fafaff3d3246438f2"
+  apiKey: "AIzaSyCfkSQzxdorBzBACW2cy3sfj67N3aA9UlQ",
+  authDomain: "tablet-firebase.firebaseapp.com",
+  projectId: "tablet-firebase",
+  storageBucket: "tablet-firebase.appspot.com",
+  messagingSenderId: "152696543265",
+  appId: "1:152696543265:web:5d55e7cc18d005df6a2b60"
 };
 
 firebase.initializeApp(firebaseConfig);
-
-
-// Initialize Firebase
-
-// const app = initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
   console.log(db);

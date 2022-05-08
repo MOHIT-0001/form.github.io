@@ -1,5 +1,5 @@
 import { taskOperations } from "./task_operations.js";
-// import Task from "./task.js";
+import Task from "./task.js";
 import { fireBaseOperations } from "./firebase-crud.js";
 
 
@@ -14,10 +14,10 @@ function init() {
 
 
 function bindEvents() {
-  document.querySelector('#add').addEventListener('click', addTask);
+  // document.querySelector('#add').addEventListener('click', addTask);
 
-  document.querySelector("#save").addEventListener("click", save);
-  // document.querySelector('#loaddb').addEventListener('click',loadFromDBRealTime);
+  document.querySelector("#save").addEventListener("click", saveToDBRealTime);
+  document.querySelector('#loaddb').addEventListener('click', loadFromDBRealTime);
 
   document.querySelector("#myInput").addEventListener("keyup", searchFun);
 
@@ -39,18 +39,29 @@ function loadFile(event) {
   addTask(img)
 }
 
+function saveToDBRealTime() {
+
+  let tasks = taskOperations.getAllTask();
+  console.log(tasks)
+  tasks.forEach(task => {
+
+    fireBaseOperations.add({ name: task.name, age: task.age, phone: task.phone, desc: task.desc, image: task.image });
+  });
+}
+
 
 
 
 function loadFromDBRealTime() {
   var collection = fireBaseOperations.readRealTime();
-  console.log('Colleciton is ', collection);
+  console.log('Collection is ', collection);
   collection.onSnapshot((snapShot) => {
     var tasks = snapShot.docs.map(d => {
+      console.log(snapShot.docs[0].data())
       console.log('Doc is ', d);
       let doc = d.data();
-
-      return new Task(doc.name, doc.age, doc.phone, doc.desc);
+      console.log(doc)
+      return new Task(doc.name, doc.age, doc.phone, doc.desc, doc.image);
     });
     printTasks(tasks);
   });
@@ -60,7 +71,7 @@ function loadFromDBRealTime() {
 function printTasks(tasks) {
   const tbody = document.querySelector("#tasks");
   tbody.innerHTML = "";
-  //tasks.forEach((task) => printTask(task));
+  console.log(tasks)
   tasks.forEach(printTask);
 }
 
@@ -86,25 +97,18 @@ function addTask(img) {
 function printTask(task) {
   const tbody = document.querySelector("#tasks");
   const tr = tbody.insertRow();
-  
+
   tr.id = "row"
-
   // console.log(tr)
-  
+
   let cellIndex = 0;
-  
+
   // var x = 0;
-
-
-  
   for (let key in task) {
     let value = task[key];
     let td = tr.insertCell(cellIndex);
     console.log(td)
-
-
     td.style.height = "70px";
-
 
     if (cellIndex == 4) {
       var imj = document.createElement('img');
@@ -115,7 +119,7 @@ function printTask(task) {
       let x = document.getElementById("myTable").rows.length
       console.log(x)
 
-      let tableRow = document.getElementsByTagName("tr")[x-1]
+      let tableRow = document.getElementsByTagName("tr")[x - 1]
       console.log(tableRow)
 
       tableRow.getElementsByTagName('td')[4].appendChild(imj);

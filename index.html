@@ -17,7 +17,9 @@
 
     <script src="controller.js" type="module"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
     <script type="module" src="firebase.js"></script>
 
 
@@ -35,10 +37,7 @@
                     <label for=""> Name</label>
                     <input id="name" class="form-control  " type="text" placeholder="Type  Name Here" />
                 </div>
-                <!-- <div class="col text-white">
-                    <label for="">Last Name</label>
-                    <input id="name" class="form-control" type="text" placeholder="Type Last Name Here" />
-                </div> -->
+               
             </div>
             <div class="form-group text-white mt-2">
                 <label for="">Age</label>
@@ -57,18 +56,16 @@
             </div>
 
 
-            <!-- <input type="file" accept="image/*" name="image" id="imgfile" onchange="loadFile(event)"> -->
-            <input class="mt-3" type="file" accept="image/*" name="image" id="imgfile" >
+            <input class="mt-3" type="file" accept="image/*" name="image" id="imgfile" style="color: red;" >
 
 
         </form>
 
         <br />
         <div>
-            <button id="add" class="btn btn-primary">Add</button>
-            <!-- <button class="btn btn-info">Update</button> -->
-            <button class="btn btn-success" id="save">Save</button>
-            <button class="btn btn-secondary" id="load">Load from database</button>
+            <!-- <button id="add" class="btn btn-primary">Add</button> -->
+            <button class="btn btn-success" id="save">Save To database</button>
+            <button class="btn btn-info text-white" id="loaddb">Load from database</button>
             <input id="myInput" class="form-control mt-3 bg-dark text-white" type="text"
                 placeholder="Type here for search by Name">
 
@@ -97,21 +94,7 @@
 
 
     </div>
-    <script>
-        // var loadFile = function (event) {
-        //     var img = document.createElement('img');
 
-        //     var image = document.getElementById('output');
-        //     img.src = URL.createObjectURL(event.target.files[0]);
-        //     document.getElementById('body').appendChild(img);
-        //     image=event.target.files[0].name
-
-
-        //     console.log(image)
-        //     // 
-        //     return image
-        // };
-    </script>
 
 </body>
 
